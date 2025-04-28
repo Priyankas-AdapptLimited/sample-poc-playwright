@@ -41,4 +41,4 @@ jobs:
 
     - name: Add Playwright report link to GitHub Actions summary
       if: always()
-      run: echo "You can view the Playwright test report at https://Priyankas-AdapptLimited.github.io/sample-poc-playwright/gh-pages/"
+      run: echo "V! You can view the Playwright test report at https://Priyankas-AdapptLimited.github.io/sample-poc-playwright/gh-pages/"
