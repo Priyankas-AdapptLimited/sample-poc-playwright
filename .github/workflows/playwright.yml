@@ -25,3 +25,20 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Publish Playwright Report as GitHub Pages
+      if: always() 
+      run: |
+        # Move the HTML report to a separate folder for GitHub Pages
+        mkdir gh-pages
+        mv playwright-report/* gh-pages/
+
+        # Configure GitHub Pages to serve files from `gh-pages` folder
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        git add gh-pages/
+        git commit -m "Publish Playwright report"
+        git push --force --set-upstream origin gh-pages
+
+    - name: Add Playwright report link to GitHub Actions summary
+      if: always()
+      run: echo "You can view the Playwright test report at https://Priyankas-AdapptLimited.github.io/sample-poc-playwright/gh-pages/"
